@@ -65,8 +65,24 @@ module.exports =
 
     @bottomDock.onDidToggle =>
         newPane.resize() if newPane.active && @bottomDock.isActive()
+
+    @bottomDock.onDidDeletePane((id) ->
+
+        console.log('deleted:', id)
+
+        if @panes and @panes instanceof Array
+            matches = @panes.filter p -> p.getId() is id
+            if matches.length > 0
+                @panes = []
+    )
+
   toggle: () ->
-    console.log(@panes[0].getId()) if @panes.length > 0
+    @bottomDock.toggle()
+    console.log('if')
+
+    
+
+
   deactivate: ->
     @subscriptions.dispose()
     @bottomDock.deletePane pane.getId() for pane in @panes

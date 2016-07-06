@@ -30,5 +30,10 @@
         "^0.2.0": "consumeBottomDock"
       }
     }
+  },
+  "apmInstallSource": {
+    "type": "git",
+    "source": "kizzlebot/todo-manager",
+    "sha": "e97bcf041b36592d81d8d3f3ada69620f9984660"
   }
 }
