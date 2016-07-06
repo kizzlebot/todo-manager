@@ -52,6 +52,8 @@ module.exports =
 
     @subscriptions.add atom.commands.add 'atom-workspace',
       'todo-manager:add': => @add()
+    @subscriptions.add atom.commands.add 'atom-workspace',
+      'todo-manager:toggle': => @toggle()
 
   add: (isInitial) ->
     return unless @bottomDock
@@ -63,7 +65,8 @@ module.exports =
 
     @bottomDock.onDidToggle =>
         newPane.resize() if newPane.active && @bottomDock.isActive()
-
+  toggle: () ->
+    console.log(@panes[0].getId()) if @panes.length > 0
   deactivate: ->
     @subscriptions.dispose()
     @bottomDock.deletePane pane.getId() for pane in @panes
